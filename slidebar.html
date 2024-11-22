@@ -1,0 +1,55 @@
+
+        {% if 'DA1' in request.session.permlist or 'Super Admin' in request.session.permlist %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'error_page1' %}">
+                <i class="bi bi-person-workspace menu-icon"></i>
+                <span class="menu-title">DA1 Error</span>
+            </a>
+        </li>
+        {% endif %}
+
+        {% if 'DA1' in request.session.permlist or 'Super Admin' in request.session.permlist %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'error_page2' %}">
+                <i class="bi bi-person-workspace menu-icon"></i>
+                <span class="menu-title">DA2 Error</span>
+            </a>
+        </li>
+        {% endif %}
+
+        {% if 'DA1' in request.session.permlist or 'Super Admin' in request.session.permlist %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'error_page3' %}">
+                <i class="bi bi-person-workspace menu-icon"></i>
+                <span class="menu-title">DA3 Error</span>
+            </a>
+        </li>
+        {% endif %}
+
+
+        {% if 'DA1' in request.session.permlist or 'Super Admin' in request.session.permlist %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'tlerror_page1' %}">
+                <i class="bi bi-person-workspace menu-icon"></i>
+                <span class="menu-title">TL DA1 Error</span>
+            </a>
+        </li>
+        {% endif %}
+
+        {% if 'DA1' in request.session.permlist or 'Super Admin' in request.session.permlist %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'tlerror_page2' %}">
+                <i class="bi bi-person-workspace menu-icon"></i>
+                <span class="menu-title">TL DA2 Error</span>
+            </a>
+        </li>
+        {% endif %}
+
+        {% if 'DA1' in request.session.permlist or 'Super Admin' in request.session.permlist %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'tlerror_page3' %}">
+                <i class="bi bi-person-workspace menu-icon"></i>
+                <span class="menu-title">TL DA3 Error</span>
+            </a>
+        </li>
+        {% endif %}
