@@ -1,0 +1,57 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} Error Data {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block content %}
+{% load tags %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Data</title>
+
+<body >
+
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% else %}
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Error Details</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Field</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in selected_error.items %}
+                            <tr>
+                                <th>{{ key }}</th>
+                                <td>{{ value }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <form method="POST" class="mt-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <button type="submit" name="action" value="accept" class="btn btn-success">Accept</button>
+                <button type="submit" name="action" value="deny" class="btn btn-danger">Deny</button>
+            </div>
+        </form>
+    {% endif %}
+</body>
+
+{% endblock content %}
