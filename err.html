@@ -12,41 +12,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error Data</title>
-
+    <style>
+          #hide-column {
+                display: none;
+            }
+    </style>
 <body >
+    <div class="card-body">
+        
+        <p><strong>Batch Name:</strong> {{ selected_error3.batch_name }}</p>
+        <p><strong>File Name:</strong> {{ selected_error3.file_name }}</p>
+        <p><strong>ID Value:</strong> {{ selected_error3.id_value }}</p>
+        <p><strong>ASIN:</strong> {{ selected_error3.asin }}</p>
+        <p><strong>Product URL:</strong> <a href="{{ selected_error3.product_url }}" target="_blank">{{ selected_error3.product_url }}</a></p>
+        <p><strong>Title:</strong> {{ selected_error3.title }}</p>
+        <p><strong>Evidence:</strong> {{ selected_error3.evidence }}</p>
+        <p><strong>Image Path:</strong> {{ selected_error3.imagepath }}</p>
+        <p><strong>Question:</strong> {{ selected_error3.question }}</p>
+        <p><strong>Answer 1:</strong> {{ selected_error3.answer_1 }}</p>
+        <p><strong>Answer 2:</strong> {{ selected_error3.answer_2 }}</p>
+        <p><strong>comment_by_emp</strong> {{ selected_error3.comment_by_emp }}</p>
 
+       
+    </div>
     {% if error %}
         <div class="alert alert-danger" role="alert">
             {{ error }}
         </div>
     {% else %}
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Error Details</h4>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Field</th>
-                            <th scope="col">Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for key, value in selected_error.items %}
+    <div >
+
+        <div >
+            <div class="row">
+                <!-- First table -->
+                <div >
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <th>{{ key }}</th>
-                                <td>{{ value }}</td>
+                                <th scope="col">Field</th>
+                                <th scope="col">Value</th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {% for field, value1 in selected_error.items %}
+                                <tr>
+                                    <td>{{ field }}</td>
+                                    <td>{{ value1 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+    
+                <!-- Second table -->
+                <div >
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">field</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for field, value2 in selected_error2.items %}
+                                <tr>
+                                    <td class="hidden">{{ field }}</td>
+                                    <td>{{ value2 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
+    </div>
+    
 
         <form method="POST" class="mt-4">
             {% csrf_token %}
             <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="Enter your comment" required></textarea>
+                <br>
                 <button type="submit" name="action" value="accept" class="btn btn-success">Accept</button>
                 <button type="submit" name="action" value="deny" class="btn btn-danger">Deny</button>
             </div>
