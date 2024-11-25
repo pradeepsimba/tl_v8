@@ -12,7 +12,7 @@ def tl2_da1_error_data_view(request):
         print(related_errors.values('error_by'))
         # Check conditions for `picked_by_emp`
         selected_error = (
-            related_errors.filter(picked_by_tl='processing',picked_by_tl2=current_user).first() or 
+            related_errors.filter(picked_by_tl='processing',picked_tl_emp_id=current_user).first() or 
             related_errors.filter(picked_by_tl__isnull=True).first()
         )
 
@@ -130,7 +130,7 @@ def tl2_da1_error_data_view(request):
                 selected_error.picked_by_tl2 = 'completed'
                 selected_error.da3 = 'No'
                 selected_error.comment_by_tl2 = comment 
-                
+
             selected_error.save()
             return redirect(request.path)
     except Exception as e:
@@ -150,7 +150,7 @@ def tl2_da2_error_data_view(request):
         print(related_errors.values('error_by'))
         # Check conditions for `picked_by_emp`
         selected_error = (
-            related_errors.filter(picked_by_tl='processing',picked_by_tl2=current_user).first() or 
+            related_errors.filter(picked_by_tl='processing',picked_tl_emp_id=current_user).first() or 
             related_errors.filter(picked_by_tl__isnull=True).first()
         )
 
@@ -287,7 +287,7 @@ def tl2_da3_error_data_view(request):
         print(related_errors.values('error_by'))
         # Check conditions for `picked_by_emp`
         selected_error = (
-            related_errors.filter(picked_by_tl2='processing',picked_by_tl2=current_user).first() or 
+            related_errors.filter(picked_by_tl2='processing',picked_tl_emp_id=current_user).first() or 
             related_errors.filter(picked_by_tl2__isnull=True).first()
         )
 
